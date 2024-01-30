@@ -61,18 +61,30 @@ int main()
 {   
    // TODO:
    // Add necessary variable declarations. 
+   pthread_t negativeID, averageID, reverseID;
 
    // TODO:
    // Add code to perform any needed initialization
    // or to process user input
+      cout << "Enter 10 integers: ";
+   for (int i = 0; i < 10; i++)
+   {
+      cin >> arr[i];
+   }
    
    // TODO: Modify according to assignment requirements
    // Create thread(s) that will execute the functions of countNegative, average, and reverse
-   // and check for the return values for errors.  
+   // and check for the return values for errors. 
 
-   
-   
-   
+   pthread_create(&negativeID, NULL, countNegatives, (void*) &arr);
+   for (int count = 0; count < 100000; count++); // Delay
+
+   pthread_create(&averageID, NULL, average, (void*) &arr);
+   for (int count = 0; count < 100000; count++); // Delay
+
+   pthread_create(&reverseID, NULL, reverse, (void*) &arr);
+   for (int count = 0; count < 100000; count++); // Delay 
+
    // NOTE: Using exit here will immediately end execution of all threads
    pthread_exit(0);
 }

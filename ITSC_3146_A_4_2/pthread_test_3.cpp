@@ -13,10 +13,11 @@ void *PrintHello(void *arg)
 int main()
 {
    pthread_t id;
-   int rc;
+   int rc, t;
    cout << "In main: creating thread \n";
+   cout << "Enter an number: ";
 
-   int t = 23;
+   cin >> t;
    rc = pthread_create(&id, NULL, PrintHello, (void*) &t);
 
    if (rc){
