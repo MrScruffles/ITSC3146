@@ -62,14 +62,17 @@ int main()
    // TODO:
    // Add necessary variable declarations. 
    pthread_t negativeID, averageID, reverseID;
+   int numberLeft = 10;
 
    // TODO:
    // Add code to perform any needed initialization
    // or to process user input
-      cout << "Enter 10 integers: ";
+   cout << "Enter " << numberLeft << " integers: ";
    for (int i = 0; i < 10; i++)
    {
       cin >> arr[i];
+      numberLeft--;
+      cout << numberLeft << " left to go: ";
    }
    
    // TODO: Modify according to assignment requirements
