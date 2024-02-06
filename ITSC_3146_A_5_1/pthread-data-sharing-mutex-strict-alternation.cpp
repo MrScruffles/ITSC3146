@@ -19,12 +19,13 @@ void* myFunction(void* arg)
       //
       //  HINT: The thread ID is stored in actual_arg
   
-      
-      
-      //  Beginning of the critical region
-        
-      count++;
-      std::cout << "Thread #" << actual_arg << " count = " << count << std::endl;
+  while(turn != actual_arg);
+
+
+    //  Beginning of the critical region
+
+    count++;
+    std::cout << "Thread #" << actual_arg << " count = " << count << std::endl;
         
       //  End of the critical region
       
