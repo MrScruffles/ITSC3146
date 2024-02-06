@@ -18,9 +18,7 @@ void* myFunction(void* arg)
       //  before it enters the critical region.
       //
       //  HINT: The thread ID is stored in actual_arg
-
-      
-      
+  
       
       
       //  Beginning of the critical region
@@ -39,6 +37,7 @@ void* myFunction(void* arg)
       //       You can use the C++ NOT operator (!)
       //       to toggle back and forth.
 
+    turn = !turn;
 
     //  Random wait - This code is just to ensure that the threads
      //  show data sharing problems
