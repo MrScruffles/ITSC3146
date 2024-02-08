@@ -19,7 +19,7 @@ void* myFunction(void* arg)
       //
       //  HINT: The thread ID is stored in actual_arg
   
-    while(turn != actual_arg);
+  while(turn != actual_arg);
 
 
     //  Beginning of the critical region
