@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int count;
-int turn = 0; //  Shared variable used to implement strict alternation
+int turn = 0; // Shared variable used to implement strict alternation
 
 void *myFunction(void *arg)
 {
@@ -12,20 +12,20 @@ void *myFunction(void *arg)
     for (unsigned int i = 0; i < 10; ++i)
     {
 
-        //  TODO:
-        //  Make sure that the thread waits for its turn
-        //  before it enters the critical region.
+        // TODO:
+        // Make sure that the thread waits for its turn
+        // before it enters the critical region.
         //
-        //  HINT: The thread ID is stored in actual_arg
+        // HINT: The thread ID is stored in actual_arg
 
-        while (turn != actual_arg);
+        while (turn != actual_arg); // Wait for the thread's turn
 
-        //  Beginning of the critical region
+        // Beginning of the critical region
 
         count++;
         std::cout << "Thread #" << actual_arg << " count = " << count << std::endl;
 
-        //  End of the critical region
+        // End of the critical region
 
         // TODO:
         // Make sure that the other thread gets a turn
@@ -33,11 +33,11 @@ void *myFunction(void *arg)
         // HINT: There are only two threads: 0 and 1
         //       You can use the C++ NOT operator (!)
         //       to toggle back and forth.
-        
+
         turn = !actual_arg;
 
-        //  Random wait - This code is just to ensure that the threads
-        //  show data sharing problems
+        // Random wait - This code is just to ensure that the threads
+        // show data sharing problems
         int max = rand() % 100000;
 
         for (int x = 0; x < max; x++);
@@ -48,7 +48,7 @@ void *myFunction(void *arg)
     pthread_exit(NULL);
 }
 
-//  HINT: It is not necessary to make any changes in main()
+// HINT: It is not necessary to make any changes in main()
 int main()
 {
     int rc[2];
