@@ -2,39 +2,63 @@
 #include <pthread.h>
 #include <stdlib.h>
 
+
 #define TOTAL_THREADS 4
 
-int count;
-pthread_mutex_t the_mutex = PTHREAD_MUTEX_INITIALIZER; // Mutex initializer macro
 
-void* myFunction(void* arg) {
-    int actual_arg = *((int*) arg);
+int count;
+pthread_mutex_t the_mutex;   //  phread mutex variable - initialize here if using the initializer macro
+
+
+void* myFunction(void* arg)
+{
+	int actual_arg = *((int*) arg);
     
-    for(unsigned int i = 0; i < 10; ++i) {
-        // Lock the mutex before entering the critical region
-        pthread_mutex_lock(&the_mutex);
+	for(unsigned int i = 0; i < 10; ++i) {
         
-        // Beginning of the critical region
+        //  TODO:
+        //  Use a Pthread mutex to control
+        //  access to the critical region.
+
+        
+        
+        //  Beginning of the critical region
+        
         count++;
         std::cout << "Thread #" << actual_arg << " count = " << count << std::endl;
-        // End of the critical region
 
-        // Unlock the mutex after the critical region is done
-        pthread_mutex_unlock(&the_mutex);
+        //  End of the critical region
+      
+        //  TODO:
+        //  Relinquish access to the Pthread mutex
+        //  since critical region is complete.
 
-        // Random wait - This code is just to ensure that the threads
-        // show data sharing problems
-        int max = rand() % 100000;
-        for (int x = 0; x < max; x++); // End of random wait code
-    }
+
+         //  Random wait - This code is just to ensure that the threads
+         //  show data sharing problems
+         int max = rand() % 100000;
+      
+         for (int x = 0; x < max; x++);
+      
+         // End of random wait code
+      
+      
+        
+	}
     
-    pthread_exit(NULL);
+	pthread_exit(NULL);
 }
 
-int main() {
+
+int main()
+{
+    int rc[TOTAL_THREADS];
     pthread_t ids[TOTAL_THREADS];
     int args[TOTAL_THREADS];
-    int rc[TOTAL_THREADS];
+    
+    
+    //  TODO: Initialize the pthread mutex here if using the initialization function.
+    
     
     count = 0;
     for(unsigned int i = 0; i < TOTAL_THREADS; ++i) {
@@ -47,9 +71,5 @@ int main() {
     }
     
     std::cout << "Final count = " << count << std::endl;
-    
-    // Destroy the mutex after it's no longer needed
-    pthread_mutex_destroy(&the_mutex);
-    
     pthread_exit(NULL);
 }
