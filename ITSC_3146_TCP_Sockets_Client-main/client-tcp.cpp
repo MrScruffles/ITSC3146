@@ -124,6 +124,12 @@ int main(int argc, char *argv[])
       int cnt = MAXBUF;
 
       // PASTE CODE FROM STEP #5 HERE
+     while ( (n = recv (s, bp, cnt, 0)) > 0 )
+     {
+        bp += n;
+        cnt = MAXBUF - (bp - bufin);
+     }
+
 
       if (n != -1)
       {
